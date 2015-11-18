@@ -5,15 +5,21 @@ import traceback
 def read_stdin():
     
     try:
-        json.loads(sys.stdin.read())
-        return True
+        contents = json.loads(sys.stdin.read())
+        return contents
     except Exception as e:
         print e.args
         print traceback.format_exc()
-        return False
+        return None
 
 
-if read_stdin() is True:
-    print 'Json is valid'
+parsed = read_stdin()
+if parsed is not None:
+    print ''
+    print ''
+    print json.dumps(parsed, indent=4)
+    print ''
+    print 'Json is Valid'
+    print ''
 else:
-    print 'Json is invalid'
+    print 'JSON IS INVALID!!!'
