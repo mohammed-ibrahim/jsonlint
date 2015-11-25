@@ -9,17 +9,14 @@ def read_stdin():
         return contents
     except Exception as e:
         print e.args
-        print traceback.format_exc()
         return None
 
 
 parsed = read_stdin()
+print ''
 if parsed is not None:
-    print ''
-    print ''
     print json.dumps(parsed, indent=4)
-    print ''
     print 'Json is Valid'
-    print ''
 else:
-    print 'JSON IS INVALID!!!'
+    print 'Json is Invalid'
+print ''
